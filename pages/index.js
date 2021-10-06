@@ -56,8 +56,9 @@ export default function Home() {
     }
   };
 
-  const onSubmitHandler = async () => {
+  const onSubmitHandler = async (e) => {
     // data uploaded to ipfs
+    e.preventDefault();
     if (name === "" || file === null) {
       return;
     }
@@ -75,7 +76,7 @@ export default function Home() {
     // minting begins
     const hash = await mintNft(jsonDataUrl);
     console.log(hash);
-    setTxhash(hash);
+    setTxhash(`Your Transaction hash is ${hash}`);
   };
   // for disabling Confetti (5 sec timeout)
   const disableConfetti = () => {
